@@ -1,0 +1,31 @@
+<div class="flex flex-col h-dvh bg-gray-100">
+  <header class="bg-gradient-to-r from-blue-700 to-blue-600 text-white shadow-md px-4 py-3 flex items-center flex-shrink-0">
+    <div class="flex items-center gap-2">
+      <span class="material-icons text-2xl">account_balance_wallet</span>
+      <span class="font-medium text-lg">Control de Gastos</span>
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4 max-w-2xl w-full mx-auto box-border">
+    <router-outlet />
+  </main>
+
+  <nav class="flex justify-around items-center bg-white border-t border-gray-200 py-1 pb-[max(4px,env(safe-area-inset-bottom))] flex-shrink-0 shadow-inner">
+    <a routerLink="/dashboard" routerLinkActive="text-blue-600" class="flex flex-col items-center gap-0.5 no-underline text-gray-400 text-xs min-w-[64px] py-1 transition-colors">
+      <span class="material-icons text-2xl">dashboard</span>
+      <span>Resumen</span>
+    </a>
+    <a routerLink="/transactions" routerLinkActive="text-blue-600" class="flex flex-col items-center gap-0.5 no-underline text-gray-400 text-xs min-w-[64px] py-1 transition-colors">
+      <span class="material-icons text-2xl">receipt_long</span>
+      <span>Movimientos</span>
+    </a>
+    <a routerLink="/categories" routerLinkActive="text-blue-600" class="flex flex-col items-center gap-0.5 no-underline text-gray-400 text-xs min-w-[64px] py-1 transition-colors">
+      <span class="material-icons text-2xl">category</span>
+      <span>Categorías</span>
+    </a>
+    <a routerLink="/settings" routerLinkActive="text-blue-600" class="flex flex-col items-center gap-0.5 no-underline text-gray-400 text-xs min-w-[64px] py-1 transition-colors">
+      <span class="material-icons text-2xl">settings</span>
+      <span>Ajustes</span>
+    </a>
+  </nav>
+</div>

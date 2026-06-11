@@ -1,0 +1,59 @@
+<div class="flex flex-col gap-5">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    <div class="rounded-2xl p-4 text-white shadow-lg bg-gradient-to-br from-green-500 to-green-400 flex items-center gap-4">
+      <span class="material-icons text-4xl opacity-90">arrow_upward</span>
+      <div class="flex flex-col">
+        <span class="text-xs uppercase tracking-wider opacity-85">Ingresos</span>
+        <span class="text-2xl font-semibold">+{{ balance.totalIncome | number:'1.0-2' }} €</span>
+      </div>
+    </div>
+    <div class="rounded-2xl p-4 text-white shadow-lg bg-gradient-to-br from-red-500 to-red-400 flex items-center gap-4">
+      <span class="material-icons text-4xl opacity-90">arrow_downward</span>
+      <div class="flex flex-col">
+        <span class="text-xs uppercase tracking-wider opacity-85">Gastos</span>
+        <span class="text-2xl font-semibold">-{{ balance.totalExpense | number:'1.0-2' }} €</span>
+      </div>
+    </div>
+    <div class="rounded-2xl p-4 text-white shadow-lg bg-gradient-to-br from-blue-600 to-blue-400 flex items-center gap-4"
+         [class.from-orange-600]="balance.balance < 0" [class.to-orange-400]="balance.balance < 0">
+      <span class="material-icons text-4xl opacity-90">account_balance_wallet</span>
+      <div class="flex flex-col">
+        <span class="text-xs uppercase tracking-wider opacity-85">Balance</span>
+        <span class="text-2xl font-semibold">{{ balance.balance | number:'1.0-2' }} €</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl p-5 shadow-sm">
+    <h3 class="font-medium text-gray-700 mb-3">Últimos meses</h3>
+    @if (months.length) {
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-gray-400 text-xs uppercase tracking-wider">
+            <th class="text-left pb-2 font-medium">Mes</th>
+            <th class="text-left pb-2 font-medium">Ingresos</th>
+            <th class="text-left pb-2 font-medium">Gastos</th>
+            <th class="text-left pb-2 font-medium">Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (m of months.slice(-6); track m.month) {
+            <tr class="border-t border-gray-100">
+              <td class="py-2.5">{{ m.month }}</td>
+              <td class="py-2.5 text-green-600">+{{ m.income | number:'1.0-0' }} €</td>
+              <td class="py-2.5 text-red-500">-{{ m.expense | number:'1.0-0' }} €</td>
+              <td class="py-2.5" [class.text-green-600]="m.income-m.expense>=0" [class.text-red-500]="m.income-m.expense<0">
+                {{ m.income - m.expense | number:'1.0-0' }} €
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <div class="text-center py-8 text-gray-400">
+        <span class="material-icons text-5xl opacity-40 mb-2">receipt_long</span>
+        <p>Aún no hay movimientos.</p>
+      </div>
+    }
+  </div>
+</div>

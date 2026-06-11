@@ -1,0 +1,61 @@
+<div class="flex flex-col gap-3">
+  <div class="bg-white rounded-2xl p-4 shadow-sm">
+    <div class="flex flex-col gap-3">
+      <div class="flex bg-gray-100 rounded-xl p-0.5">
+        <button (click)="newTxn.type='expense'" class="flex-1 py-2.5 rounded-lg font-medium text-sm transition cursor-pointer"
+                [class.bg-white]="newTxn.type==='expense'" [class.text-blue-600]="newTxn.type==='expense'" [class.text-gray-400]="newTxn.type!=='expense'" [class.shadow-sm]="newTxn.type==='expense'">
+          Gasto
+        </button>
+        <button (click)="newTxn.type='income'" class="flex-1 py-2.5 rounded-lg font-medium text-sm transition cursor-pointer"
+                [class.bg-white]="newTxn.type==='income'" [class.text-blue-600]="newTxn.type==='income'" [class.text-gray-400]="newTxn.type!=='income'" [class.shadow-sm]="newTxn.type==='income'">
+          Ingreso
+        </button>
+      </div>
+      <input type="number" [(ngModel)]="newTxn.amount" placeholder="Importe" class="w-full text-2xl font-semibold p-3 border border-gray-200 rounded-xl outline-none focus:border-blue-400">
+      <select [(ngModel)]="newTxn.category" class="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-blue-400 bg-white text-sm">
+        <option value="" disabled selected>Categoría</option>
+        @for (c of categories; track c.id) {
+          <option [value]="c.name">{{ c.name }}</option>
+        }
+      </select>
+      <input type="text" [(ngModel)]="newTxn.description" placeholder="Descripción (opcional)" class="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-blue-400 text-sm">
+      <input type="date" [value]="newTxn.date | date:'yyyy-MM-dd'" (change)="newTxn.date = $any($event.target).valueAsDate" class="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-blue-400 text-sm">
+      <button (click)="add()" class="bg-blue-600 text-white rounded-xl py-3 font-medium flex items-center justify-center gap-2 hover:bg-blue-700 transition cursor-pointer">
+        <span class="material-icons text-lg">add</span> Añadir
+      </button>
+    </div>
+  </div>
+
+  @if (transactions.length) {
+    <div class="flex flex-col gap-1.5">
+      @for (t of transactions; track t.id) {
+        <div class="bg-white rounded-xl px-4 py-3 shadow-sm flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
+                 [style.background]="getCategoryColor(t.category)+'20'"
+                 [style.color]="getCategoryColor(t.category)">
+              <span class="material-icons text-xl">{{ getCategoryIcon(t.category) }}</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm font-medium">{{ t.description || t.category }}</span>
+              <span class="text-xs text-gray-400">{{ t.date | date:'dd MMM' }} · {{ t.category }}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-sm" [class.text-green-600]="t.type==='income'" [class.text-red-500]="t.type==='expense'">
+              {{ t.type === 'income' ? '+' : '-' }}{{ t.amount | number:'1.0-2' }} €
+            </span>
+            <button (click)="delete(t.id)" class="text-gray-300 hover:text-red-500 transition cursor-pointer">
+              <span class="material-icons text-lg">close</span>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="text-center py-12 text-gray-400">
+      <span class="material-icons text-5xl opacity-40 mb-2">receipt_long</span>
+      <p>Aún no hay movimientos.</p>
+    </div>
+  }
+</div>
