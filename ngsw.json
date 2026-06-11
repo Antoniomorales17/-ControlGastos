@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1781179680991,
+  "timestamp": 1781179821452,
   "index": "/-ControlGastos/index.html",
   "assetGroups": [
     {
@@ -13,9 +13,9 @@
       "urls": [
         "/-ControlGastos/favicon.ico",
         "/-ControlGastos/index.html",
-        "/-ControlGastos/main-VWLSMAP4.js",
+        "/-ControlGastos/main-WJHL2SB5.js",
         "/-ControlGastos/manifest.webmanifest",
-        "/-ControlGastos/styles-4UNJYSKD.css"
+        "/-ControlGastos/styles-JBPZVY54.css"
       ],
       "patterns": []
     },
@@ -50,10 +50,10 @@
     "/-ControlGastos/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/-ControlGastos/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/-ControlGastos/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/-ControlGastos/index.html": "8e0e4fae89f4250e07a6f625370e171cda567fd7",
-    "/-ControlGastos/main-VWLSMAP4.js": "595d99dba9e18803f28b976b30134ebf48fa4ab3",
+    "/-ControlGastos/index.html": "cdf698c505641fb4455024d341bb71cef47fc8e7",
+    "/-ControlGastos/main-WJHL2SB5.js": "1a836b307db4c979d3357895122854c43d7e1626",
     "/-ControlGastos/manifest.webmanifest": "b92ddcf901b642deccc3c762d0d66f7569569987",
-    "/-ControlGastos/styles-4UNJYSKD.css": "c204deabe9dc5c07713e2b59af1612851ade9b30"
+    "/-ControlGastos/styles-JBPZVY54.css": "99b5d393c811d2c11692777ab09af13a7d54a648"
   },
   "navigationUrls": [
     {
